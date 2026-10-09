@@ -52,3 +52,15 @@ def computeWordFrequencies(tokens):
             frequencies[token] = 1
 
     return frequencies
+
+# Time: O(U log U) comparisons plus output. Comparing tied tokens can cost O(L), giving O(U log U * (L + 1) + S), where L is the longest
+# token length and S is output size. Extra space: O(U).
+def printFrequencies(frequencies):
+    ordered = sorted(
+        frequencies.items(),
+        key=lambda item: (-item[1], item[0])
+    )
+
+    for token, count in ordered:
+        print(f"{token}\t{count}")
+
