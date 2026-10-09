@@ -53,7 +53,8 @@ def computeWordFrequencies(tokens):
 
     return frequencies
 
-# Time: O(U log U) comparisons plus output. Comparing tied tokens can cost O(L), giving O(U log U * (L + 1) + S), where L is the longest
+# Time: O(U log U) comparisons plus output. Comparing tied tokens can cost O(L), 
+# giving O(U log U * (L + 1) + S), where L is the longest
 # token length and S is output size. Extra space: O(U).
 def printFrequencies(frequencies):
     ordered = sorted(
@@ -64,3 +65,24 @@ def printFrequencies(frequencies):
     for token, count in ordered:
         print(f"{token}\t{count}")
 
+# Expected time: O(N) for tokenization and counting, plus the sorting and output cost described above printFrequencies.
+# Extra space: O(N).
+def main():
+    if len(sys.argv) != 2:
+        print("Usage: python3 PartA.py <text_file>", file=sys.stderr)
+        return 2
+
+    try:
+        tokens = tokenize(sys.argv[1])
+        frequencies = computeWordFrequencies(tokens)
+        printFrequencies(frequencies)
+
+    except (OSError, ValueError) as error:
+        print(f"Error: {error}", file=sys.stderr)
+        return 1
+
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
