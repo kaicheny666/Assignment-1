@@ -40,3 +40,15 @@ def tokenize(file_path):
 
     return tokens
 
+# Expected time: O(T + C), where T is the number of tokens and C is their total character count, including the cost of string hashing.
+# Extra space: O(U) dictionary entries for U unique tokens, plus the space occupied by their token text.
+def computeWordFrequencies(tokens):
+    frequencies = {}
+
+    for token in tokens:
+        if token in frequencies:
+            frequencies[token] += 1
+        else:
+            frequencies[token] = 1
+
+    return frequencies
