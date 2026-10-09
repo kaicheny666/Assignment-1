@@ -30,13 +30,3 @@ def iter_tokens(file_path):
         # Preserve a final token even without a trailing delimiter.
         if current_token:
             yield "".join(current_token)
-
-# Time: O(N). Extra space: O(N) in the worst case for the returned list.
-def tokenize(file_path):
-    tokens = []
-
-    for token in iter_tokens(file_path):
-        tokens.append(token)
-
-    return tokens
-
