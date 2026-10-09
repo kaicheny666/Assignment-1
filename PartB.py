@@ -22,3 +22,26 @@ def count_common_tokens(file_path1, file_path2):
 
     return common_count
 
+# Expected time: O(N1 + N2).
+# Extra space: O(V1 + B + L), as explained above.
+def main():
+    if len(sys.argv) != 3:
+        print(
+            "Usage: python3 PartB.py <text_file1> <text_file2>",
+            file=sys.stderr
+        )
+        return 2
+
+    try:
+        result = count_common_tokens(sys.argv[1], sys.argv[2])
+        print(result)
+
+    except (OSError, ValueError) as error:
+        print(f"Error: {error}", file=sys.stderr)
+        return 1
+
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
